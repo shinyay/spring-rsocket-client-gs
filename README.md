@@ -5,6 +5,16 @@ Overview
 ## Description
 
 ## Demo
+### Dependency
+- `spring-boot-starter-rsocket`
+- `spring-shell-starter:2.0.1.RELEASE`
+
+```
+dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-rsocket")
+	implementation("org.springframework.shell:spring-shell-starter:2.0.1.RELEASE")
+}
+```
 
 ## Features
 
