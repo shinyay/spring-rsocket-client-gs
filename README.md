@@ -16,8 +16,11 @@ dependencies {
 }
 ```
 
-#### `Spring Shell`
-Users of the Spring Shell project can easily build a full featured shell ( aka command line) application by depending on the Spring Shell jars and adding their own commands (which come as methods on spring beans). Creating a command line application can be useful e.g. to interact with your project's REST API, or to work with local file content.
+### Spring Shell
+Users of the Spring Shell project can easily build a full featured shell application by depending on the Spring Shell jars and adding their own commands (which come as methods on spring beans). 
+
+#### `@ShellComponent`
+a variation of @Component that is used to restrict the set of classes that are scanned for candidate commands
 
 ## Features
 
