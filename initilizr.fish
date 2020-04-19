@@ -2,9 +2,9 @@
 ## https://docs.spring.io/initializr/docs/current/reference/html/#initializr-documentation
 
 set -g GROUP_ID com.google.shinyay
-set -g ARTIFACT_ID spring-boot-demo
+set -g ARTIFACT_ID spring-rsocket-cliend-gs
 set -g NAME $ARTIFACT_ID
-set -g DESCRIPTION "Sample project for Spring Boot"
+set -g DESCRIPTION "Sample project for Spring RSocket Client"
 set -g PACKAGE $GROUP_ID
 set -g DEPENDENCY rsocket
 
