@@ -1,4 +1,4 @@
-# Spring Initilizr
+# Spring RSocket Client Getting Started
 
 Bootstrap your application
 
