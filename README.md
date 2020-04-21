@@ -22,6 +22,9 @@ Users of the Spring Shell project can easily build a full featured shell applica
 #### `@ShellComponent`
 a variation of @Component that is used to restrict the set of classes that are scanned for candidate commands
 
+#### `@ShellMethod`
+@ShellMethod annotation over the method signature to activate Spring Shell and declare the help text that users will see if they type help
+
 ## Features
 
 - feature:1

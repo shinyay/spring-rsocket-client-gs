@@ -17,7 +17,7 @@ class RSocketShellClient(val rsocketRequestBuilder: RSocketRequester.Builder) {
 
     val rsocketRequester: RSocketRequester? = rsocketRequestBuilder.connectTcp("localhost", 7000).block()
 
-    @ShellMethod
+    @ShellMethod("Send One request and One response will be printed.")
     fun requestResponse(): Unit {
         logger.info("Sending one request. Waiting for one response...")
         val message = this.rsocketRequester
