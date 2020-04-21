@@ -7,7 +7,7 @@ import org.springframework.shell.standard.ShellComponent
 import org.springframework.shell.standard.ShellMethod
 
 @ShellComponent
-class RSocketShellClient(val rsocketRequestBuilder: RSocketRequester.Builder) {
+class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
 
     val client = "Client"
     val request = "Request"
@@ -15,7 +15,7 @@ class RSocketShellClient(val rsocketRequestBuilder: RSocketRequester.Builder) {
     val stream = "Stream"
     val channel = "Channel"
 
-    val rsocketRequester: RSocketRequester? = rsocketRequestBuilder.connectTcp("localhost", 7000).block()
+    val rsocketRequester = rsocketRequestBuilder.connectTcp("localhost", 7000).block()
 
     @ShellMethod("Send One request and One response will be printed.")
     fun requestResponse(): Unit {
