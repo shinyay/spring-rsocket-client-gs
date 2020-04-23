@@ -11,9 +11,6 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
 
     val client = "Client"
     val request = "Request"
-    val fire_and_forget = "Fire-And-Forget"
-    val stream = "Stream"
-    val channel = "Channel"
 
     val rsocketRequester = rsocketRequestBuilder.connectTcp("localhost", 7000).block()
 
