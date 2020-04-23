@@ -41,6 +41,11 @@ Run the RSocket Client
 $ ./gradlew clean build
 $ ava -jar build/libs/spring-rsocket-cliend-gs-0.0.1-SNAPSHOT.jar
 ```
+```
+shell:>request-response
+24-04-2020 06:45:07.083 [main           ] INFO  c.g.shinyay.client.RSocketShellClient    - Sending one request. Waiting for one response...
+24-04-2020 06:45:07.384 [main           ] INFO  c.g.shinyay.client.RSocketShellClient    - Response was: Message(origin=Server, interaction=Response, index=0, created=1587678307)
+```
 
 ## Features
 
