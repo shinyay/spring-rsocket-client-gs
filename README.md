@@ -1,6 +1,6 @@
 # Spring RSocket Client Getting Started
 
-Overview
+RSocket Client to send request-response messages to the RSocket Server
 
 ## Description
 
