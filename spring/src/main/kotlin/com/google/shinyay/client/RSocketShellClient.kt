@@ -11,6 +11,7 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
 
     val client = "Client"
     val request = "Request"
+    val fireAndForget = "Fire-And-Forget"
 
     val rsocketRequester = rsocketRequestBuilder.connectTcp("localhost", 7000).block()
 
@@ -23,5 +24,15 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
                 ?.retrieveMono(Message::class.java)
                 ?.block()
         logger.info("Response was: $message")
+    }
+
+    @ShellMethod("Send One request and No response will be ")
+    fun fineAndForget(): Unit {
+        logger.info("Fire-And-Forget. Sending one request. Expecting no response...")
+        this.rsocketRequester
+                ?.route("fire-and-forget")
+                ?.data(Message(client, fireAndForget))
+                ?.send()
+                ?.block()
     }
 }
