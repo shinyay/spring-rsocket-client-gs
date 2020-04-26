@@ -25,14 +25,4 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
                 ?.block()
         logger.info("Response was: $message")
     }
-
-    @ShellMethod("Send One request and No response will be ")
-    fun fineAndForget(): Unit {
-        logger.info("Fire-And-Forget. Sending one request. Expecting no response...")
-        this.rsocketRequester
-                ?.route("fire-and-forget")
-                ?.data(Message(client, fireAndForget))
-                ?.send()
-                ?.block()
-    }
 }
