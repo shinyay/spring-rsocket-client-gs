@@ -49,5 +49,5 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
     }
 
     @ShellMethod("Stop Streaming messages from the Server")
-    fun stopStream()= disposable.dispose()
+    fun stop()= disposable?.dispose()
 }
