@@ -40,7 +40,7 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
     }
 
     @ShellMethod("Send One request and Many response will be printed")
-    fun stream(x: Any): Unit {
+    fun stream(): Unit {
         this.disposable = this.rsocketRequester
                 ?.route("stream")
                 ?.data(Message(client, stream))
