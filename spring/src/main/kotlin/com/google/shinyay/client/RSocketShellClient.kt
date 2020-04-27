@@ -47,4 +47,7 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
                 ?.retrieveFlux(Message::class.java)
                 ?.subscribe { it -> logger.info("Response received: $it") }!!
     }
+
+    @ShellMethod("Stop Streaming messages from the Server")
+    fun stopStream()= disposable.dispose()
 }
