@@ -5,6 +5,7 @@ import com.google.shinyay.model.Message
 import org.springframework.messaging.rsocket.RSocketRequester
 import org.springframework.shell.standard.ShellComponent
 import org.springframework.shell.standard.ShellMethod
+import reactor.core.Disposable
 
 @ShellComponent
 class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
@@ -12,6 +13,8 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
     val client = "Client"
     val request = "Request"
     val fireAndForget = "Fire-And-Forget"
+    val stream = "Stream"
+    lateinit var disposable: Disposable
 
     val rsocketRequester = rsocketRequestBuilder.connectTcp("localhost", 7000).block()
 
@@ -26,7 +29,7 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
         logger.info("Response was: $message")
     }
 
-    @ShellMethod("Send One request and No response will be ")
+    @ShellMethod("Send One request and No response will be printed")
     fun fineAndForget(): Unit {
         logger.info("Fire-And-Forget. Sending one request. Expecting no response...")
         this.rsocketRequester
@@ -34,5 +37,14 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
                 ?.data(Message(client, fireAndForget))
                 ?.send()
                 ?.block()
+    }
+
+    @ShellMethod("Send One request and Many response will be printed")
+    fun stream(x: Any): Unit {
+        this.disposable = this.rsocketRequester
+                ?.route("stream")
+                ?.data(Message(client, stream))
+                ?.retrieveFlux(Message::class.java)
+                ?.subscribe { it -> logger.info("Response received: $it") }!!
     }
 }
