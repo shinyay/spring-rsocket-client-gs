@@ -6,6 +6,8 @@ import org.springframework.messaging.rsocket.RSocketRequester
 import org.springframework.shell.standard.ShellComponent
 import org.springframework.shell.standard.ShellMethod
 import reactor.core.Disposable
+import reactor.core.publisher.Mono
+import java.time.Duration
 
 @ShellComponent
 class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
@@ -50,4 +52,15 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
 
     @ShellMethod("Stop Streaming messages from the Server")
     fun stop()= disposable?.dispose()
+
+    @ShellMethod("Stream configurations to Server. Stream of responses will be printed")
+    fun channel(): Unit {
+        val config1: Mono<Duration> = Mono.just(Duration.ofSeconds(1))
+
+        this.disposable = this.rsocketRequester
+                ?.route("channel")
+                ?.data(config1)
+                ?.retrieveFlux(Message::class.java)
+                ?.subscribe{message -> logger.info(("Response received: $message"))}!!
+    }
 }
