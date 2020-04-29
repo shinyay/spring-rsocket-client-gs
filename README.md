@@ -47,6 +47,12 @@ shell:>request-response
 24-04-2020 06:45:07.384 [main           ] INFO  c.g.shinyay.client.RSocketShellClient    - Response was: Message(origin=Server, interaction=Response, index=0, created=1587678307)
 ```
 
+### RSocket Client
+#### Request-Response
+#### Fire-and-Forget
+#### Stream
+#### Channel
+
 ## Features
 
 - feature:1
