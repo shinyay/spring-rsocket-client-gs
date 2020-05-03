@@ -57,7 +57,12 @@ class RSocketShellClient(rsocketRequestBuilder: RSocketRequester.Builder) {
     @ShellMethod("Stream configurations to Server. Stream of responses will be printed")
     fun channel(): Unit {
         val config1: Mono<Duration> = Mono.just(Duration.ofSeconds(1))
-        val config: Flux<Duration> = Flux.concat(config1)
+        val config2: Mono<Duration> = Mono.just(Duration.ofSeconds(2))
+                .delayElement(Duration.ofSeconds(5))
+        val config3: Mono<Duration> = Mono.just(Duration.ofSeconds(4))
+                .delayElement(Duration.ofSeconds(10))
+        val config: Flux<Duration> = Flux.concat(config1, config2, config3)
+                .doOnNext { duration -> logger.info("Sending configuration for $duration second interval") }
 
         this.disposable = this.rsocketRequester
                 ?.route("channel")
