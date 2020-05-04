@@ -61,15 +61,24 @@ fun requestResponse(): Unit {
 ```
 #### Fire-and-Forget
 ```
-    fun fineAndForget(): Unit {s
-        this.rsocketRequester
-                ?.route("fire-and-forget")
-                ?.data(Message(client, fireAndForget))
-                ?.send()
-                ?.block()
-    }
+fun fineAndForget(): Unit {s
+	this.rsocketRequester
+			?.route("fire-and-forget")
+			?.data(Message(client, fireAndForget))
+			?.send()
+			?.block()
+}
 ```
 #### Request-Stream
+```
+fun stream(): Unit {
+	this.disposable = this.rsocketRequester
+			?.route("stream")
+			?.data(Message(client, stream))
+			?.retrieveFlux(Message::class.java)
+			?.subscribe { it -> logger.info("Response received: $it") }!!
+}
+```
 #### Channel
 
 ## Features
