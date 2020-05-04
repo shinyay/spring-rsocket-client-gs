@@ -51,7 +51,6 @@ shell:>request-response
 #### Request-Response
 ```
 fun requestResponse(): Unit {
-	logger.info("Sending one request. Waiting for one response...")
 	val message = this.rsocketRequester
 			?.route("request-response")
 			?.data(Message(client, request))
@@ -61,6 +60,15 @@ fun requestResponse(): Unit {
 }
 ```
 #### Fire-and-Forget
+```
+    fun fineAndForget(): Unit {s
+        this.rsocketRequester
+                ?.route("fire-and-forget")
+                ?.data(Message(client, fireAndForget))
+                ?.send()
+                ?.block()
+    }
+```
 #### Request-Stream
 #### Channel
 
