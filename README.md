@@ -80,6 +80,15 @@ fun stream(): Unit {
 }
 ```
 #### Channel
+```
+fun channel(): Unit {
+	this.disposable = this.rsocketRequester
+			?.route("channel")
+			?.data(config)
+			?.retrieveFlux(Message::class.java)
+			?.subscribe{message -> logger.info(("Response received: $message"))}!!
+}
+```
 
 ## Features
 
