@@ -49,13 +49,20 @@ shell:>request-response
 
 ### RSocket Client
 #### Request-Response
-when you send one request and receive one response, exactly like HTTP. Even here though, the protocol has advantages over HTTP in that it is asynchronous and multiplexed.
+```
+fun requestResponse(): Unit {
+	logger.info("Sending one request. Waiting for one response...")
+	val message = this.rsocketRequester
+			?.route("request-response")
+			?.data(Message(client, request))
+			?.retrieveMono(Message::class.java)
+			?.block()
+	logger.info("Response was: $message")
+}
+```
 #### Fire-and-Forget
-an optimization of request/response that is useful when a response is not needed, such as for non-critical event logging.
 #### Request-Stream
-analogous to Request/Response returning a collection, the collection is streamed back instead of querying until complete, so for example send a bank account number, respond with a real-time stream of account transactions.
 #### Channel
-a bi-directional stream of messages allowing for arbitrary interaction models.
 
 ## Features
 
