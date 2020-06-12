@@ -2,6 +2,8 @@
 
 RSocket Client to send request-response messages to the RSocket Server
 
+- [RSocket Server - shinyay/spring-rsocket-server-gs](https://github.com/shinyay/spring-rsocket-server-gs)
+
 ## Description
 
 ## Demo
