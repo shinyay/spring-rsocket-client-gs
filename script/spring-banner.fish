@@ -9,7 +9,7 @@ function do_func
     return
   end
 
-  set -lq _flag_param
+  set -lq _flag_text
   or set -l _flag_text "Spring"
 
   curl "https://devops.datenkollektiv.de/renderBannerTxt?text={$_flag_text}&font=soft" > ../spring/src/main/resources/banner.txt
